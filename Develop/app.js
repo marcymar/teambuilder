@@ -18,10 +18,11 @@ const buildManager = employee => {
       message: 'Enter the Room Number'
     }
   ])
-  .then(({officeNumber}) => {
-    employee.push(new Manager(employee.name, employee.id, employee.email, officeNumber))
-  })
-  .catch(err => console.log(err))
+    .then(({ officeNumber }) => {
+      employee.push(new Manager(employee.name, employee.id, employee.email, officeNumber))
+      subMenu()
+    })
+    .catch(err => console.log(err))
 }
 
 const buildEngineer = employee => {
@@ -32,10 +33,11 @@ const buildEngineer = employee => {
       message: 'Enter the GitHub username'
     }
   ])
-  .then(({gitHub}) => {
-    employee.push(new Engineer(employee.name, employee.id, employee.email, gitHub))
-  })
-  .catch(err => console.log(err))
+    .then(({ gitHub }) => {
+      employee.push(new Engineer(employee.name, employee.id, employee.email, gitHub))
+      subMenu()
+    })
+    .catch(err => console.log(err))
 }
 
 const buildIntern = employee => {
@@ -46,10 +48,30 @@ const buildIntern = employee => {
       message: 'Enter the school name'
     }
   ])
-  .then(({school}) => {
-  employee.push(new Intern(employee.name, employee.id, employee.email, school))
+    .then(({ school }) => {
+      employee.push(new Intern(employee.name, employee.id, employee.email, school))
+      subMenu()
+    })
+    .catch(err => console.log(err))
+}
+
+const subMenu = () => {
+  prompt({
+    type: 'list',
+    name: 'addition',
+    message: 'Do you want to add another employee?',
+    choices: ['yes', 'no']
   })
-  .catch(err => console.log(err))
+    .then(({ addition }) => {
+      switch (addition) {
+        case 'yes':
+          mainMenu()
+          break
+        case 'no':
+          const html = render(employees)
+          fs.writeFileSync(path.join(__dirname, 'output', 'index.html'), html)
+      }
+    })
 }
 
 const mainMenu = () => {
@@ -76,22 +98,23 @@ const mainMenu = () => {
       message: 'Enter employee email'
     }
   ])
-  .then(employee => {
-    switch (employee.position) {
-      case 'Manager':
-        buildManager(employee)
-        break
-      case 'Engineer':
-        buildEngineer(employee)
-        break
-      case 'Intern':
-        buildIntern(employee)
-        break
-    }
-  })
-  .catch(err => console.log(err))
+    .then(employee => {
+      switch (employee.position) {
+        case 'Manager':
+          buildManager(employee)
+          break
+        case 'Engineer':
+          buildEngineer(employee)
+          break
+        case 'Intern':
+          buildIntern(employee)
+          break
+      }
+    })
+    .catch(err => console.log(err))
 }
 
+mainMenu()
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
