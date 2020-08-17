@@ -10,6 +10,88 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const buildManager = employee => {
+  prompt([
+    {
+      type: 'input',
+      name: 'officeNumber',
+      message: 'Enter the Room Number'
+    }
+  ])
+  .then(({officeNumber}) => {
+    employee.push(new Manager(employee.name, employee.id, employee.email, officeNumber))
+  })
+  .catch(err => console.log(err))
+}
+
+const buildEngineer = employee => {
+  prompt([
+    {
+      type: 'input',
+      name: 'gitHub',
+      message: 'Enter the GitHub username'
+    }
+  ])
+  .then(({gitHub}) => {
+    employee.push(new Engineer(employee.name, employee.id, employee.email, gitHub))
+  })
+  .catch(err => console.log(err))
+}
+
+const buildIntern = employee => {
+  prompt([
+    {
+      type: 'input',
+      name: 'school',
+      message: 'Enter the school name'
+    }
+  ])
+  .then(({school}) => {
+  employee.push(new Intern(employee.name, employee.id, employee.email, school))
+  })
+  .catch(err => console.log(err))
+}
+
+const mainMenu = () => {
+  prompt([
+    {
+      type: 'list',
+      name: 'position',
+      choices: ['Manager', 'Engineer', 'Intern'],
+      message: 'Select the employee position '
+    },
+    {
+      type: 'input',
+      name: 'name',
+      message: 'Enter employee name'
+    },
+    {
+      type: 'input',
+      name: 'id',
+      message: 'Enter employee ID number'
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: 'Enter employee email'
+    }
+  ])
+  .then(employee => {
+    switch (employee.position) {
+      case 'Manager':
+        buildManager(employee)
+        break
+      case 'Engineer':
+        buildEngineer(employee)
+        break
+      case 'Intern':
+        buildIntern(employee)
+        break
+    }
+  })
+  .catch(err => console.log(err))
+}
+
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
