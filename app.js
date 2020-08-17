@@ -4,6 +4,7 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
+const { prompt } = require('inquirer')
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
@@ -21,7 +22,7 @@ const buildManager = employee => {
     }
   ])
     .then(({ officeNumber }) => {
-      employee.push(new Manager(employee.name, employee.id, employee.email, officeNumber))
+      employees.push(new Manager(employee.name, employee.id, employee.email, officeNumber))
       subMenu()
     })
     .catch(err => console.log(err))
@@ -36,7 +37,7 @@ const buildEngineer = employee => {
     }
   ])
     .then(({ gitHub }) => {
-      employee.push(new Engineer(employee.name, employee.id, employee.email, gitHub))
+      employees.push(new Engineer(employee.name, employee.id, employee.email, gitHub))
       subMenu()
     })
     .catch(err => console.log(err))
@@ -51,7 +52,7 @@ const buildIntern = employee => {
     }
   ])
     .then(({ school }) => {
-      employee.push(new Intern(employee.name, employee.id, employee.email, school))
+      employees.push(new Intern(employee.name, employee.id, employee.email, school))
       subMenu()
     })
     .catch(err => console.log(err))
