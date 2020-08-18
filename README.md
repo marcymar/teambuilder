@@ -17,6 +17,8 @@ This was made using HTML, CSS, JS and the npm Inquirer.
 ## Questions
 You can find me [on Github](github.com/marcymar) under the username: marcymar.
 
-Demonstration video of [the app.](https://www.youtube.com/watch?v=8XA5DtMD-qg&feature=youtu.be:target="blank")
+Demonstration video of [the app.](https://www.youtube.com/watch?v=8XA5DtMD-qg&feature=youtu.be)
+
+<a href="https://www.youtube.com/watch?v=8XA5DtMD-qg&feature=youtu.be" target="_blank">Demonstration video of the app.</a>
 
 Photo of the HTML page deployed: ![](assets/teambuild.png)
