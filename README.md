@@ -19,4 +19,4 @@ You can find me [on Github](github.com/marcymar) under the username: marcymar.
 
 Demonstration video of [the app.](https://www.youtube.com/watch?v=8XA5DtMD-qg&feature=youtu.be)
 
-Photo of the HTML page deployed: ❮img src="assets/teambuilder.png" ❯
+Photo of the HTML page deployed: ![](assets/teambuild.png)
