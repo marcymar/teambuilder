@@ -1,4 +1,22 @@
-* 
-{ font-family: 'Alata', sans-serif;
-  background-color: lightseagreen;
+* {
+  font-family: 'Alata', sans-serif;
+}
+
+body {
+  background-color: rgba(51, 201, 193, 0.774);
+}
+
+.card {
+  background-color: rgb(89, 170, 166);
+  margin: auto;
+  padding: 5px;
+  box-shadow: 0 0 10px 2px
+}
+
+.card-header {
+  background-color: #e9ecef;
+}
+
+.card-body {
+  background-color: #e9ecef;
 }
